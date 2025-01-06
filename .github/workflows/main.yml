@@ -12,9 +12,7 @@ defaults:
 
 
 jobs:
-
   spack:
-
     strategy:
       matrix:
         device: [cpu, gpu_nvidia]
