@@ -25,7 +25,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Set up Spack
         run: git clone https://github.com/spack/spack
+      - run: find ~/.spack
       - run: ./install slate
         if: ${{ ! cancelled() }}
-#     - run: ./install blaspp
-#        if: ${{ ! cancelled() }}
+      - run: ./install blaspp
+        if: ${{ ! cancelled() }}
