@@ -14,16 +14,6 @@ jobs:
   spack:
     strategy:
       matrix:
-#        spec: 
-#          - slate
-#          - blaspp
-#          - lapackpp
-#          - papi
-#          - magma
-#          - plasma
-#          - heffte
-#          - hpcc
-#          - parsec
         device: [cpu, gpu_nvidia]
         compiler: [gcc, oneapi]
       fail-fast: false
@@ -33,7 +23,8 @@ jobs:
       COMPILER: ${{matrix.compiler}}
     steps:
       - uses: actions/checkout@v4
-      - run: git clone https://github.com/spack/spack
+      - name: Set up Spack
+        run: git clone https://github.com/spack/spack
       - run: ./install slate
         if: ${{ ! cancelled() }}
      - run: ./install blaspp
