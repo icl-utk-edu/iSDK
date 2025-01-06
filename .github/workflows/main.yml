@@ -26,6 +26,6 @@ jobs:
       - name: Set up Spack
         run: git clone https://github.com/spack/spack
       - run: ./install slate
-        if: ${{ ! cancelled() }}
+#        if: ${{ ! cancelled() }}
      - run: ./install blaspp
-        if: ${{ ! cancelled() }}
+#        if: ${{ ! cancelled() }}
