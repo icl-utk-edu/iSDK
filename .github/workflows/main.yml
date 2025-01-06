@@ -33,13 +33,8 @@ jobs:
       COMPILER: ${{matrix.compiler}}
     steps:
       - uses: actions/checkout@v4
-      - run: exit 1
+      - run: git clone https://github.com/spack/spack
+      - run: ./install slate
         if: ${{ ! cancelled() }}
-      - run: exit 2
+     - run: ./install blaspp
         if: ${{ ! cancelled() }}
-      - run: echo OK
-        if: ${{ ! cancelled() }}
-#      - name: Set up Spack
-#        run: git clone https://github.com/spack/spack
-#      - run: ./install slate
-#      - run: ./install blaspp
