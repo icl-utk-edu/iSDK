@@ -23,8 +23,8 @@ jobs:
       COMPILER: ${{matrix.compiler}}
     steps:
       - uses: actions/checkout@v4
-#      - name: Set up Spack
-#        run: git clone https://github.com/spack/spack
+      - name: Set up Spack
+        run: git clone https://github.com/spack/spack
 #      - run: ./install slate
 #        if: ${{ ! cancelled() }}
 #     - run: ./install blaspp
