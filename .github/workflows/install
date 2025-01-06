@@ -2,6 +2,7 @@
 
 SPEC=$1
 
+source /etc/profile
 source spack/share/spack/setup-env.sh
 
 if [ "$COMPILER" = "oneapi" ]; then

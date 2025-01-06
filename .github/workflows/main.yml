@@ -10,6 +10,7 @@ defaults:
 
 jobs:          
   spack:
+    continue-on-error: true
     strategy:
       matrix:
 #        spec: 
@@ -26,13 +27,14 @@ jobs:
         compiler: [gcc, oneapi]
       fail-fast: false
     runs-on: ${{ matrix.device }}
-    continue-on-error: true
     env:
       DEVICE:   ${{matrix.device}}
       COMPILER: ${{matrix.compiler}}
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Spack
-        run: git clone https://github.com/spack/spack
-      - run: ./install slate
-      - run: ./install blaspp
+      - run: exit 1
+      - run: echo OK
+#      - name: Set up Spack
+#        run: git clone https://github.com/spack/spack
+#      - run: ./install slate
+#      - run: ./install blaspp
