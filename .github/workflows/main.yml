@@ -34,11 +34,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: exit 1
-        continue-on-error: true
+        if: ${{ ! cancelled() }}
       - run: exit 2
-        continue-on-error: true
+        if: ${{ ! cancelled() }}
       - run: exit 3
-        continue-on-error: true
+        if: ${{ ! cancelled() }}
 #      - name: Set up Spack
 #        run: git clone https://github.com/spack/spack
 #      - run: ./install slate
