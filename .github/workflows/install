@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+SPEC=$1
+
+source spack/share/spack/setup-env.sh
+
+spack spec $SPEC %$COMPILER
+
