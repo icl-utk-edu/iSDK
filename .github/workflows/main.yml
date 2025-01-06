@@ -37,7 +37,7 @@ jobs:
         if: ${{ ! cancelled() }}
       - run: exit 2
         if: ${{ ! cancelled() }}
-      - run: exit 3
+      - run: echo OK
         if: ${{ ! cancelled() }}
 #      - name: Set up Spack
 #        run: git clone https://github.com/spack/spack
