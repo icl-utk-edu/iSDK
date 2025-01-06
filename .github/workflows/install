@@ -4,7 +4,7 @@ SPEC=$1
 
 source spack/share/spack/setup-env.sh
 
-if [ $COMPILER -eq "oneapi" ]; then
+if [ "$COMPILER" = "oneapi" ]; then
    module load intel-oneapi-compilers
 else
    module load gcc@12
