@@ -40,5 +40,6 @@ jobs:
       - name: Set up Spack
         run: git clone https://github.com/spack/spack
       - name: Install package
-        run: source spack/share/spack/setup-env.sh && \
+        run: |
+             source spack/share/spack/setup-env.sh
              spack spec $SPEC %$COMPILER
