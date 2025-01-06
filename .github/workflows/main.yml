@@ -11,7 +11,6 @@ defaults:
     working-directory: .github/workflows/
 
 jobs:
-  continue-on-error: true          
   spack:
     strategy:
       matrix:
@@ -29,6 +28,7 @@ jobs:
         compiler: [gcc, oneapi]
       fail-fast: false
     runs-on: ${{ matrix.device }}
+    continue-on-error: true
     env:
       DEVICE:   ${{matrix.device}}
       COMPILER: ${{matrix.compiler}}
