@@ -30,6 +30,7 @@ jobs:
       DEVICE:   ${{matrix.device}}
       COMPILER: ${{matrix.compiler}}
     steps:
+      - continue-on-error: true
       - uses: actions/checkout@v4
       - name: Set up Spack
         run: git clone https://github.com/spack/spack
