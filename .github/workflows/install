@@ -2,7 +2,8 @@
 
 SPEC=$1
 
-source /etc/profile
+source /etc/profile.d/modules.sh
+export MODULEPATH=/apps/spacks/current/share/spack/modules/linux-rocky9-x86_64
 source spack/share/spack/setup-env.sh
 
 if [ "$COMPILER" = "oneapi" ]; then
