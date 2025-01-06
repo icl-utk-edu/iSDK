@@ -28,14 +28,17 @@ jobs:
         compiler: [gcc, oneapi]
       fail-fast: false
     runs-on: ${{ matrix.device }}
-    continue-on-error: true
     env:
       DEVICE:   ${{matrix.device}}
       COMPILER: ${{matrix.compiler}}
     steps:
       - uses: actions/checkout@v4
       - run: exit 1
-      - run: echo OK
+        continue-on-error: true
+      - run: exit 2
+        continue-on-error: true
+      - run: exit 3
+        continue-on-error: true
 #      - name: Set up Spack
 #        run: git clone https://github.com/spack/spack
 #      - run: ./install slate
