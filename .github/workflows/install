@@ -3,7 +3,7 @@
 SPEC=$1
 
 if [ "$DEVICE" = "gpu_nvidia" ]; then
-   $SPEC+="+cuda cuda_arch=70"
+   SPEC+="+cuda cuda_arch=70"
 fi
 SPEC+="%$COMPILER"
 
