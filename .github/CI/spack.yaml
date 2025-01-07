@@ -11,4 +11,6 @@ spack:
   view: false
   concretizer:
     unify: true
-
+  packages:
+    all:
+      compiler: COMPILER
