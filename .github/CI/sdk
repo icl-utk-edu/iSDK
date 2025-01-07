@@ -22,8 +22,9 @@ sed -i -e "s/COMPILER/$COMPILER/" spack.yaml
 spack env activate .
 if [ "$DEVICE" = "cpu" ]; then
    spack rm magma
+   spack add ginkgo
 fi
 
-spack concretize
-# spack install --fail-fast
+#spack concretize
+spack install --fail-fast
 
