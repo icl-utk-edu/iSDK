@@ -17,7 +17,7 @@ fi
 spack compiler find
 spack compiler list
 
-cp packages-$DEVICE.yaml spack/etc/spack/
+cp packages-$DEVICE.yaml spack/etc/spack/packages.yaml
 
 spack env activate .
 spack concretize
