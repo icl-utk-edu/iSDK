@@ -15,11 +15,9 @@ else
    module load gcc
 fi
 spack compiler find
-spack compiler list
 
 cp packages-$DEVICE.yaml spack/etc/spack/packages.yaml
 sed -i -e "s/COMPILER/$COMPILER/" spack.yaml
-cat spack.yaml
 
 spack env activate .
 if [ "$DEVICE" = "cpu" ]; then

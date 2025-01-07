@@ -4,8 +4,8 @@ spack:
   - slate
   - blaspp
   - lapackpp
-  - magma
   - papi
+  - magma
   - heffte
   - parsec
   view: false
@@ -13,4 +13,9 @@ spack:
     unify: true
   packages:
     all:
-      compiler: [ COMPILER ]
+      require:
+      - '%COMPILER'
+    gcc-runtime:
+      require: '%gcc'
+    bison:
+      require: '%gcc'
