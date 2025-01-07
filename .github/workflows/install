@@ -5,7 +5,7 @@ SPEC=$1
 if [ "$DEVICE" = "gpu_nvidia" ]; then
    SPEC+="+cuda cuda_arch=70"
 fi
-SPEC+="%$COMPILER"
+SPEC+=" %$COMPILER"
 
 source /etc/profile.d/modules.sh
 export MODULEPATH=/apps/spacks/current/share/spack/modules/linux-rocky9-x86_64
