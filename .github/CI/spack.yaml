@@ -13,4 +13,4 @@ spack:
     unify: true
   packages:
     all:
-      compiler: COMPILER
+      compiler: [ COMPILER ]
