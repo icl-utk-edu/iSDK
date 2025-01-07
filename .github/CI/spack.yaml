@@ -11,8 +11,4 @@ spack:
   view: false
   concretizer:
     unify: true
-  packages:
-    all:
-      variants: [ +cuda, cuda_arch=70 ]
-      compiler: [ gcc@12 ]
 
