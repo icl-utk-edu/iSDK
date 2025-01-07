@@ -1,0 +1,4 @@
+packages:
+  all:
+    variants: [ +cuda, cuda_arch=70 ]
+

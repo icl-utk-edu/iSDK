@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+DEVICE=$1
+COMPILER=$2
+
+source /etc/profile.d/modules.sh
+export MODULEPATH=/apps/spacks/current/share/spack/modules/linux-rocky9-x86_64
+
+git clone https://github.com/spack/spack
+source spack/share/spack/setup-env.sh
+
+if [ "$COMPILER" = "oneapi" ]; then
+   module load intel-oneapi-compilers
+else
+   module load gcc
+fi
+spack compiler find
+spack compiler list
+
+cp packages-$DEVICE.yaml spack/etc/spack/
+
+spack env activate .
+spack concretize
+# spack install --fail-fast
+
