@@ -15,8 +15,8 @@ spack:
     all:
       require:
       - '%COMPILER'
-      providers:
-        libglx: [ mesa ]
+    opengl:
+      buildable: false
     gcc-runtime:
       require: '%gcc'
     bison:
