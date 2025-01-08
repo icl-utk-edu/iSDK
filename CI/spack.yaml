@@ -4,7 +4,7 @@ spack:
   - slate
   - blaspp
   - lapackpp
-  - papi
+  - papi@7.0.1
   - magma
   - heffte
   - parsec
@@ -15,6 +15,8 @@ spack:
     all:
       require:
       - '%COMPILER'
+      providers:
+        libglx: [ mesa ]
     gcc-runtime:
       require: '%gcc'
     bison:
