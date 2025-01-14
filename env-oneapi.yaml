@@ -16,7 +16,7 @@ spack:
     all:
       require:
       - '%oneapi'
-    variants: [ "~cuda~rocm" ]
+      variants: [ "~cuda~rocm" ]
     opengl:
       buildable: false
     gcc-runtime:
