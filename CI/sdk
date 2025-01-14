@@ -11,20 +11,18 @@ source spack/share/spack/setup-env.sh
 
 if [ "$COMPILER" = "oneapi" ]; then
    module load intel-oneapi-compilers
-else
+elif [[ "$COMPILER" = "gcc" ]]
    module load gcc
 fi
 spack compiler find
 
-cp packages-$DEVICE.yaml spack/etc/spack/packages.yaml
-sed -i -e "s/COMPILER/$COMPILER/" spack.yaml
-
-spack env activate .
-if [ "$DEVICE" = "cpu" ]; then
-   spack rm magma
-   spack add ginkgo
+if [[ "$DEVICE" = "gpu_nvidia" ]]; then
+   ACCEL="-cuda"
+elif [[ "$DEVICE" = "gpu_amd" ]]
+   ACCEL="-rocm"
 fi
 
-#spack concretize
+spack env create iSDK ../env-$COMPILER$ACCEL.yaml
+spack env activate iSDK
 spack install --fail-fast
 

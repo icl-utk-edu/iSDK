@@ -31,11 +31,11 @@ $ source spack/share/spack/setup-env.sh
 ```
 
 Then check out the iSDK git repository and create the iSDK envionment
-based on your desired compiler and accelerator architecture:
+based on your desired compiler and accelerator:
 
 ```
 $ git clone https://github.com/icl-utk-edu/iSDK
-$ spack env activate --envfile iSDK/env-gcc-nvidia.yaml
+$ spack env create iSDK iSDK/env-gcc-cuda.yaml
 $ spack install
 ```
 

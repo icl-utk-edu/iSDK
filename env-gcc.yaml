@@ -16,6 +16,7 @@ spack:
     all:
       require:
       - '%gcc'
+      variants: [ "~cuda~rocm" ]
     opengl:
       buildable: false
     gcc-runtime:
