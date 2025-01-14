@@ -26,3 +26,5 @@ spack:
       require: '%gcc'
     bison:
       require: '%gcc'
+    glog:
+      require: '%gcc'
