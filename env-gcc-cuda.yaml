@@ -9,6 +9,7 @@ spack:
   - ginkgo
   - heffte
   - parsec
+  - openmpi~rsh
   view: true
   concretizer:
     unify: true
