@@ -1,0 +1,27 @@
+# This is a Spack Environment file.
+spack:
+  specs:
+  - slate
+  - blaspp
+  - lapackpp
+  - papi
+  - magma
+  - ginkgo
+  - heffte
+  - parsec
+  view: true
+  concretizer:
+    unify: true
+  packages:
+    all:
+      require:
+      - '%oneapi'
+      variants:
+      - '+rocm'
+      - 'amdgpu_target=gfx90a'
+    opengl:
+      buildable: false
+    gcc-runtime:
+      require: '%gcc'
+    bison:
+      require: '%gcc'

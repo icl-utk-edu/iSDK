@@ -1,0 +1,24 @@
+# This is a Spack Environment file.
+spack:
+  specs:
+  - slate
+  - blaspp
+  - lapackpp
+  - papi
+  - magma
+  - ginkgo
+  - heffte
+  - parsec
+  view: true
+  concretizer:
+    unify: true
+  packages:
+    all:
+      require:
+      - '%gcc'
+    opengl:
+      buildable: false
+    gcc-runtime:
+      require: '%gcc'
+    bison:
+      require: '%gcc'
