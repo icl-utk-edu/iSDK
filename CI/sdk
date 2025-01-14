@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+set +x
+trap 'echo "# $BASH_COMMAND"' DEBUG
+
 DEVICE=$1
 COMPILER=$2
 
@@ -11,15 +14,17 @@ source spack/share/spack/setup-env.sh
 
 if [ "$COMPILER" = "oneapi" ]; then
    module load intel-oneapi-compilers
-elif [[ "$COMPILER" = "gcc" ]]
+elif [ "$COMPILER" = "gcc" ]; then
    module load gcc
 fi
 spack compiler find
 
-if [[ "$DEVICE" = "gpu_nvidia" ]]; then
+if [ "$DEVICE" = "gpu_nvidia" ]; then
    ACCEL="-cuda"
-elif [[ "$DEVICE" = "gpu_amd" ]]
+elif [ "$DEVICE" = "gpu_amd" ]; then
    ACCEL="-rocm"
+elif [ "$DEVICE" = "gpu_intel" ]; then
+   ACCEL="-sycl"
 fi
 
 spack env create iSDK ../env-$COMPILER$ACCEL.yaml
