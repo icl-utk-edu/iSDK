@@ -16,7 +16,7 @@ spack:
   packages:
     all:
       require:
-      - '%oneapi%:2022'
+      - '%oneapi@:2022'
       variants:
       - '+cuda'
       - 'cuda_arch=70'
