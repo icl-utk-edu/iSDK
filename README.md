@@ -33,7 +33,7 @@ $ source spack/share/spack/setup-env.sh
 Then check out the iSDK git repository and create the iSDK envionment
 based on your desired compiler and accelerator:
 
-```
+```console
 $ git clone https://github.com/icl-utk-edu/iSDK
 $ spack env create iSDK iSDK/env-gcc-cuda.yaml
 $ spack install
@@ -43,13 +43,13 @@ This will build and install the full environment from source code. If you wish t
 environment, you may do so before installing by using the spack utility.  For example, to remove the MAGMA 
 package:
 
-```
+```console
 $ spack rm magma
 ```
 
 If you make changes after installation, you will need to "concretize" the configuration again before re-installations:
 
-```
+```console
 $ spack concretize --force
 $ spack install
 ```
