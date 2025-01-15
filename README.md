@@ -25,7 +25,7 @@ The iSDK is distributed as a set of [Spack](https://github.com/spack/spack) envi
 which contain a vetted set of ICL software versions and all required dependencies.
 Start by setting up a Spack installation if you do not yet have one:
 
-```
+```bash
 $ git clone https://github.com/spack/spack
 $ source spack/share/spack/setup-env.sh
 ```
