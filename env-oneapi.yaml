@@ -23,3 +23,5 @@ spack:
       require: '%gcc'
     bison:
       require: '%gcc'
+    python:
+      require: '%gcc'

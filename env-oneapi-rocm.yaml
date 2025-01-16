@@ -28,3 +28,5 @@ spack:
       require: '%gcc'
     glog:
       require: '%gcc'
+    python:
+      require: '%gcc'
