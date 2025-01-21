@@ -28,5 +28,15 @@ fi
 
 spack env create iSDK ../env-$COMPILER$ACCEL.yaml
 spack env activate iSDK
+
+if [ "$DEVICE" = "gpu_amd" ]; then
+   # Add local ROCm as external dependencies
+   ROCM_VER=$(ls -d /opt/rocm-* | sed 's/.*-//')
+   if [ ! -z "$ROCM_VER" ]; then
+      sed -e -i /ROCM_VER/$ROCM_VER/ rocm-packages.yaml > spack/etc/spack/packages.yaml
+   fi
+fi
+
+
 spack install --fail-fast
 
