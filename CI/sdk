@@ -14,7 +14,7 @@ source spack/share/spack/setup-env.sh
 
 module load gcc@11
 if [ "$COMPILER" = "oneapi" ]; then
-   module load intel-oneapi-compilers@2021
+   module load intel-oneapi-compilers@2024
 fi
 spack compiler find
 
