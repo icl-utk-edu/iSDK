@@ -27,7 +27,7 @@ elif [ "$DEVICE" = "gpu_intel" ]; then
 fi
 
 ln -s ../env-$COMPILER$ACCEL.yaml spack.yaml
-spack env activate -d . iSDK
+spack env activate -d .
 
 if [ "$DEVICE" = "gpu_amd" ]; then
    # Add local ROCm as external dependencies
