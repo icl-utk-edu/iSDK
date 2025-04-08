@@ -14,7 +14,7 @@ jobs:
   sdk:
     strategy:
       matrix:
-        device: [cpu, gpu_nvidia, gpu_amd]
+        device: [cpu_intel, cpu_amd, gpu_nvidia, gpu_amd, gpu_intel]
         compiler: [gcc, oneapi]
       fail-fast: false
     runs-on: ${{matrix.device}}
