@@ -9,10 +9,10 @@ COMPILER=$2
 source /etc/profile.d/modules.sh
 export MODULEPATH=/apps/spacks/current/share/spack/modules/linux-rocky9-x86_64
 
-git clone https://github.com/spack/spack
+git clone -b v0.23.1 https://github.com/spack/spack
 source spack/share/spack/setup-env.sh
 
-module load gcc@12
+module load gcc@11
 if [ "$COMPILER" = "oneapi" ]; then
    module load intel-oneapi-compilers@2021
 fi
@@ -26,8 +26,8 @@ elif [ "$DEVICE" = "gpu_intel" ]; then
    ACCEL="-sycl"
 fi
 
-spack env create iSDK ../env-$COMPILER$ACCEL.yaml
-spack env activate iSDK
+ln -s ../env-$COMPILER$ACCEL.yaml spack.yaml
+spack env activate -d . iSDK
 
 if [ "$DEVICE" = "gpu_amd" ]; then
    # Add local ROCm as external dependencies
@@ -36,7 +36,6 @@ if [ "$DEVICE" = "gpu_amd" ]; then
       sed s/ROCM_VER/$ROCM_VER/ rocm-packages.yaml > spack/etc/spack/packages.yaml
    fi
 fi
-
 
 spack install --fail-fast
 
