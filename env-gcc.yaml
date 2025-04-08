@@ -4,6 +4,7 @@ spack:
   - slate
   - blaspp
   - lapackpp
+  - plasma
   - papi
   - ginkgo
   - heffte
