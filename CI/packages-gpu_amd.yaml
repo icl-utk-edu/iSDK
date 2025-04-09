@@ -1,4 +1,0 @@
-packages:
-  all:
-    variants: [ +rocm, amdgpu_target=gfx90a ]
-

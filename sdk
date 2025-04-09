@@ -9,7 +9,7 @@ COMPILER=$2
 source /etc/profile.d/modules.sh
 export MODULEPATH=/apps/spacks/current/share/spack/modules/linux-rocky9-x86_64
 
-git clone -b v0.23.1 https://github.com/spack/spack
+git clone https://github.com/spack/spack
 source spack/share/spack/setup-env.sh
 
 module load gcc@11
