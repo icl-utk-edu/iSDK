@@ -12,6 +12,9 @@ jobs:
       matrix:
         device: [cpu_intel, cpu_amd, gpu_nvidia, gpu_amd, gpu_intel]
         compiler: [gcc, oneapi]
+        exclude:
+          - device: gpu_intel
+            compiler: gcc
       fail-fast: false
     runs-on: ${{matrix.device}}
     steps:
