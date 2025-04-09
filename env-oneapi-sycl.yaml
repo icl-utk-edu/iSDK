@@ -1,0 +1,30 @@
+# This is a Spack Environment file.
+spack:
+  specs:
+  - slate
+  - blaspp
+  - lapackpp
+  - papi
+  - ginkgo
+  - heffte
+  - parsec
+  - openmpi~rsh
+  view: true
+  concretizer:
+    unify: true
+  packages:
+    all:
+      require: 
+      - "%oneapi"
+      variants:
+      - "+sycl"
+      - "~cuda"
+      - "~rocm"
+    opengl:
+      buildable: false
+    gcc-runtime:
+      require: '%gcc'
+    bison:
+      require: '%gcc'
+    python:
+      require: '%gcc'
