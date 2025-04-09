@@ -26,7 +26,7 @@ elif [ "$DEVICE" = "gpu_intel" ]; then
    ACCEL="-sycl"
 fi
 
-ln -s ../env-$COMPILER$ACCEL.yaml spack.yaml
+ln -s env-$COMPILER$ACCEL.yaml spack.yaml
 spack env activate -d .
 
 if [ "$DEVICE" = "gpu_amd" ]; then
