@@ -38,5 +38,6 @@ if [ "$DEVICE" = "gpu_amd" ]; then
    fi
 fi
 
-spack install --fail-fast
+spack concretize
+#spack install --fail-fast
 
