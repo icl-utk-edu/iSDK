@@ -16,12 +16,12 @@ spack:
   packages:
     all:
       require:
-      - '%oneapi@:2022'
+      - '%oneapi'
       variants:
       - '+cuda'
       - 'cuda_arch=70'
     cuda:
-      require: '@12.3'
+      require: '@12.5'
     opengl:
       buildable: false
     gcc-runtime:

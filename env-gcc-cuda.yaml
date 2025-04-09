@@ -20,6 +20,8 @@ spack:
       variants:
       - '+cuda'
       - 'cuda_arch=70'
+    cuda:
+      require: '@12.5'
     opengl:
       buildable: false
     gcc-runtime:
