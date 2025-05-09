@@ -1,0 +1,25 @@
+name: papi
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sdk:
+    strategy:
+      matrix:
+        device: [cpu_intel, cpu_amd, gpu_nvidia, gpu_amd, gpu_intel]
+        compiler: [gcc, oneapi]
+        spec: [ papi@develop]
+        exclude:
+          - device: gpu_intel
+            compiler: gcc
+      fail-fast: false
+    runs-on: ${{matrix.device}}
+    env:
+      SPEC: ${{matrix.spec}}
+      COMPILER: ${{matrix.compiler}}
+      SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
+      KEY: /apps/spacks/spack-signing-key
+    steps:
+      - uses: actions/checkout@v4
+      - run: .github/workflows/spack.sh
