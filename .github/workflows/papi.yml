@@ -1,6 +1,7 @@
 name: papi
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
