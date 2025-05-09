@@ -8,16 +8,17 @@ jobs:
   sdk:
     strategy:
       matrix:
-        device: [cpu_intel, cpu_amd, gpu_nvidia, gpu_amd, gpu_intel]
+        device: [cpu_intel]
         compiler: [gcc, oneapi]
-        spec: [ papi@develop]
-        exclude:
-          - device: gpu_intel
-            compiler: gcc
+        include:
+          - device: gpu_nvidia
+            spec: +cuda+nvml
+          - device: gpu_amd
+            spec: +rocm+rocm_smi+rocp_sdk
       fail-fast: false
     runs-on: ${{matrix.device}}
     env:
-      SPEC: ${{matrix.spec}}
+      SPEC: papi@master ${{matrix.spec}}
       COMPILER: ${{matrix.compiler}}
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
       KEY: /apps/spacks/spack-signing-key
