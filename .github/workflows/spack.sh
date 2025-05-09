@@ -11,14 +11,10 @@ export HOME=`pwd`
 git clone $SPACK
 source spack/share/spack/setup-env.sh
 
-# Set up binary mirror
-spack gpg trust $KEY.priv
-spack gpg trust $KEY.pub
 spack config add "config:install_tree:padded_length:128"
-FINGER=`gpg --show-keys --with-fingerprint --with-colons $KEY.priv | grep fpr | sed s/fpr:*// | sed s/://`
-[ -z "$FINGER" ] && exit 1
-spack mirror add --scope=site --type=binary test \
-   http://spack-cache.icl.utk.edu/cache/$FINGER
+CACHE=/tmp/github/buildcache
+mkdir -p $CACHE
+spack mirror add --unsigned mycache file://$CACHE
 
 if ! spack COMPILER info $COMPILER; then
    C_PKG=${COMPILER/oneapi/intel-oneapi-compilers}
@@ -26,10 +22,11 @@ if ! spack COMPILER info $COMPILER; then
    spack load --first $C_PKG
    spack compiler find
 fi
-spack env activate --temp
+spack env activate -V --temp
 spack add $SPEC %$COMPILER
 spack add $C_PKG
 spack install --fail-fast --no-cache --overwrite -y --fresh
-curl http://spack-cache.icl.utk.edu/client | perl
+spack buildcache push --unsigned file://$CACHE
+
 
 
