@@ -22,7 +22,8 @@ if ! spack COMPILER info $COMPILER; then
    spack load --first $C_PKG
    spack compiler find
 fi
-spack env activate -V --temp
+spack env create --without-view papi
+spack env activate papi
 spack add $SPEC %$COMPILER
 spack add $C_PKG
 spack install --fail-fast --no-cache --overwrite -y --fresh
