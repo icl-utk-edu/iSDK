@@ -18,7 +18,7 @@ spack mirror add --unsigned mycache file://$CACHE
 save_buildcache() {
   spack buildcache push --unsigned file://$CACHE
 }
-trap 'save_buildcache' ERR
+trap 'save_buildcache' EXIT
 
 # Set up the compiler
 C_PKG=${COMPILER/oneapi/intel-oneapi-compilers}
