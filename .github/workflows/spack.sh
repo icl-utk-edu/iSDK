@@ -12,8 +12,7 @@ git clone $SPACK
 source spack/share/spack/setup-env.sh
 
 spack config add "config:install_tree:padded_length:128"
-CACHE=/tmp/github/buildcache
-mkdir -p $CACHE
+CACHE=/apps/spacks/buildcache/github
 spack mirror add --unsigned mycache file://$CACHE
 
 save_buildcache() {
