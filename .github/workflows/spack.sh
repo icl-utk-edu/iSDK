@@ -26,9 +26,6 @@ C_PKG=${COMPILER/oneapi/intel-oneapi-compilers}
 spack env activate --temp
 spack add $C_PKG
 spack install
-spack load $C_PKG
-spack compiler find
-spack compiler rm llvm-amdgpu || true
 save_buildcache
 spack env deactivate
 spack config change "packages:all:require:'%$COMPILER'"
@@ -36,6 +33,8 @@ spack config change "packages:all:require:'%$COMPILER'"
 # Install the main package
 spack env create --without-view myenv
 spack env activate myenv
+spack compiler find 
+spack compiler rm llvm-amdgpu || true
 spack add $SPEC
 spack install --only=dependencies --fail-fast --fresh
 spack install --only=package --no-cache --overwrite -y
