@@ -28,6 +28,7 @@ spack add $C_PKG
 spack install
 spack load $C_PKG
 spack compiler find
+spack compiler rm llvm-amdgpu || true
 save_buildcache
 spack env deactivate
 spack config change "packages:all:require:'%$COMPILER'"
