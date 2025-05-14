@@ -16,14 +16,15 @@ jobs:
           - device: gpu_nvidia
             spec: +cuda +nvml
           - device: gpu_amd
-            spec: +rocm +rocm_smi +rocp_sdk amdgpu_target=gfx906
+            spec: +rocm +rocm_smi amdgpu_target=gfx906 ^hip@6.3.2
+          - device: gpu_amd
+            spec: +rocp_sdk amdgpu_target=gfx906 ^hip@6.3.2
       fail-fast: false
     runs-on: ${{matrix.device}}
     env:
       SPEC: papi@master ${{matrix.spec}}
       COMPILER: gcc@12
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
-      KEY: /apps/spacks/spack-signing-key
     steps:
       - uses: actions/checkout@v4
       - run: .github/workflows/spack.sh
