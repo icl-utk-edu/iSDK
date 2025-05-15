@@ -23,7 +23,7 @@ jobs:
     runs-on: ${{matrix.device}}
     env:
       SPEC: papi@master ${{matrix.spec}}
-      COMPILER: gcc@12
+      COMPILER: gcc@11
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
     steps:
       - uses: actions/checkout@v4
