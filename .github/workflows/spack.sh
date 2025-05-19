@@ -39,6 +39,3 @@ spack add $SPEC
 spack install --only=dependencies --fail-fast --fresh
 spack install --only=package --no-cache --overwrite -y
 
-spack load papi
-papi_component_avail
-

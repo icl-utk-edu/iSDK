@@ -26,13 +26,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: .github/workflows/spack.sh
+      - run: | 
+             source spack/share/spack/setup-env.sh
+             spack load papi
+             papi_component_avail
 
   slate:
     name: ${{matrix.package}} ${{matrix.variants}} ${{matrix.compiler}}
     strategy:
       matrix:
         package: [ slate@master, slate ]
-        complier: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
+        compiler: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
         device: [ cpu, gpu_nvidia, gpu_amd ]
         include:
           - device: gpu_nvidia
@@ -43,7 +47,7 @@ jobs:
     runs-on: ${{matrix.device}}
     env:
       SPEC: ${{matrix.package}} ${{matrix.variants}} 
-      COMPILER: gcc@11
+      COMPILER: ${{matrix.compiler}}
     steps:
       - uses: actions/checkout@v4
       - run: .github/workflows/spack.sh
