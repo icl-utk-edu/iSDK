@@ -28,6 +28,7 @@ jobs:
       #- run: .github/workflows/spack.sh
 
   slate:
+    name: ${{matrix.package}} ${{matrix.variants}} ${{matrix.compiler}}
     strategy:
       matrix:
         package: [ slate@master, slate ]
@@ -35,6 +36,8 @@ jobs:
         include:
           - device: gpu_nvidia
             variants: +cuda cuda_arch=70
+          - device: gpu_amd
+            variants: +rocm amdgpu_target=gfx906
       fail-fast: false
     runs-on: ${{matrix.device}}
     env:
