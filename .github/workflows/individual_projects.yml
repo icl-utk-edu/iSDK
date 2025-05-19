@@ -33,8 +33,7 @@ jobs:
       matrix:
         package: [ slate@master, slate ]
         complier: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
-        device: [ cpu ]
-        variants: [ "~rocm~cuda~sycl" ]
+        device: [ cpu, gpu_nvidia, gpu_amd ]
         include:
           - device: gpu_nvidia
             variants: +cuda cuda_arch=70
