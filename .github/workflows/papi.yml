@@ -25,4 +25,21 @@ jobs:
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
     steps:
       - uses: actions/checkout@v4
-      - run: .github/workflows/spack.sh
+      #- run: .github/workflows/spack.sh
+
+  slate:
+    strategy:
+      matrix:
+        package: [ slate@master, slate ]
+        complier: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
+        include:
+          - device: gpu_nvidia
+            variants: +cuda cuda_arch=70
+      fail-fast: false
+    runs-on: ${{matrix.device}}
+    env:
+      SPEC: ${{matrix.package}} ${{matrix.variants}} 
+      COMPILER: gcc@11
+    steps:
+      - uses: actions/checkout@v4
+      #- run: .github/workflows/spack.sh
