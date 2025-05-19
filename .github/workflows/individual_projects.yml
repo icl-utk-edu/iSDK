@@ -1,4 +1,4 @@
-name: papi
+name: ICL projects
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
     steps:
       - uses: actions/checkout@v4
-      #- run: .github/workflows/spack.sh
+      - run: .github/workflows/spack.sh
 
   slate:
     name: ${{matrix.package}} ${{matrix.variants}} ${{matrix.compiler}}
@@ -46,4 +46,4 @@ jobs:
       COMPILER: gcc@11
     steps:
       - uses: actions/checkout@v4
-      #- run: .github/workflows/spack.sh
+      - run: .github/workflows/spack.sh
