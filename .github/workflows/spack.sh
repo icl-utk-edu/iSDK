@@ -36,6 +36,9 @@ spack env activate myenv
 spack compiler find 
 spack compiler rm llvm-amdgpu || true
 spack add $SPEC
-spack install --only=dependencies --fail-fast --fresh
+spack concretize --fresh
+spack install --only=dependencies --fail-fast &
+sleep 10
+spack install --only=dependencies --fail-fast
 spack install --only=package --no-cache --overwrite -y
 
