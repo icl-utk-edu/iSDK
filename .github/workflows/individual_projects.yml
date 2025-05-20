@@ -26,7 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: .github/workflows/spack.sh
-      - run: | 
+      - run: |
+             .github/workflows/spack.sh
              source spack/share/spack/setup-env.sh
              spack load papi
              papi_component_avail
