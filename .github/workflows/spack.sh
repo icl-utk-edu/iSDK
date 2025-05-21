@@ -17,7 +17,7 @@ CACHE=/apps/spacks/buildcache/github
 spack mirror add --unsigned mycache file://$CACHE
 
 save_buildcache() {
-  spack buildcache push --unsigned file://$CACHE
+  spack buildcache push --unsigned file://$CACHE || true
 }
 trap 'save_buildcache' EXIT
 
@@ -42,7 +42,3 @@ sleep 10
 spack install --only=dependencies --fail-fast
 wait
 spack install --only=package --no-cache --overwrite -y
-
-spack env deactivate
-ls -l spack/opt/spack
-spack find
