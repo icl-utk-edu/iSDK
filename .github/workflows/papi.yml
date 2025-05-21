@@ -28,6 +28,8 @@ jobs:
       - run: .github/workflows/spack.sh
       - run: |
              source spack/share/spack/setup-env.sh
+             pwd
+             ls -l
              ls spack/opt/spack/lin*
              which spack
              spack find
