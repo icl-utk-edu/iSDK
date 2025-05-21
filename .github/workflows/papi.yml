@@ -1,4 +1,4 @@
-name: ICL projects
+name: PAPI
 
 on:
   push:
@@ -28,28 +28,8 @@ jobs:
       - run: .github/workflows/spack.sh
       - run: |
              source spack/share/spack/setup-env.sh
+             ls spack/opt/spack/lin*
              which spack
              spack find
              spack load papi
              papi_component_avail
-
-  slate:
-    name: ${{matrix.package}} ${{matrix.variants}} ${{matrix.compiler}}
-    strategy:
-      matrix:
-        package: [ slate@master, slate ]
-        compiler: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
-        device: [ cpu, gpu_nvidia, gpu_amd ]
-        include:
-          - device: gpu_nvidia
-            variants: +cuda cuda_arch=70
-          - device: gpu_amd
-            variants: +rocm amdgpu_target=gfx906
-      fail-fast: false
-    runs-on: ${{matrix.device}}
-    env:
-      SPEC: ${{matrix.package}} ${{matrix.variants}} 
-      COMPILER: ${{matrix.compiler}}
-    steps:
-      - uses: actions/checkout@v4
-      - run: .github/workflows/spack.sh

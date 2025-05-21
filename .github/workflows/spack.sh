@@ -40,5 +40,6 @@ spack concretize --fresh
 spack install --only=dependencies --fail-fast &
 sleep 10
 spack install --only=dependencies --fail-fast
+wait
 spack install --only=package --no-cache --overwrite -y
 
