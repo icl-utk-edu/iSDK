@@ -16,7 +16,7 @@ jobs:
           - device: gpu_nvidia
             variants: +cuda cuda_arch=70
           - device: gpu_amd
-            variants: +rocm amdgpu_target=gfx906
+            variants: +rocm amdgpu_target=gfx906 ^hip@6.3.2
       fail-fast: false
     runs-on: ${{matrix.device}}
     env:
