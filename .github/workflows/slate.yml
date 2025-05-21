@@ -1,7 +1,7 @@
 name: SLATE
 
 on:
-#  push:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -9,14 +9,18 @@ jobs:
     name: ${{matrix.package}} ${{matrix.variants}} ${{matrix.compiler}}
     strategy:
       matrix:
-        package: [ slate@master, slate ]
-        compiler: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
-        device: [ cpu, gpu_nvidia, gpu_amd ]
+#        package: [ slate@master, slate ]
+#        compiler: [ gcc@11, gcc@12, gcc@13, gcc@14 ]
+#        device: [ cpu, gpu_nvidia, gpu_amd ]
         include:
-          - device: gpu_nvidia
-            variants: +cuda cuda_arch=70
-          - device: gpu_amd
+          - package: slate
+            compiler: gcc@11
+            device: gpu_amd
             variants: +rocm amdgpu_target=gfx906 ^hip@6.3.2
+          #- device: gpu_nvidia
+          #  variants: +cuda cuda_arch=70
+          #- device: gpu_amd
+          #  variants: +rocm amdgpu_target=gfx906 ^hip@6.3.2
       fail-fast: false
     runs-on: ${{matrix.device}}
     env:
