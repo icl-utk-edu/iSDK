@@ -43,3 +43,6 @@ spack install --only=dependencies --fail-fast
 wait
 spack install --only=package --no-cache --overwrite -y
 
+spack env deactivate
+ls -l spack/opt/spack
+spack find

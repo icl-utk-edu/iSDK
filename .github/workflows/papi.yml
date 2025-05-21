@@ -30,7 +30,8 @@ jobs:
              source spack/share/spack/setup-env.sh
              pwd
              ls -l
-             ls spack/opt/spack/lin*
+             ls -l spack/opt/spack
+             find spack/opt/spack/_* | wc
              which spack
              spack find
              spack load papi
