@@ -16,7 +16,7 @@ jobs:
           - device: gpu_nvidia
             spec: +cuda +nvml
           - device: gpu_amd
-            spec: +rocm +rocm_smi +rocp_sdk amdgpu_target=gfx906 ^hip@6.3.2
+            spec: +rocm amdgpu_target=gfx906 ^hip@6.3.2
           - device: gpu_amd
             spec: +rocm_smi amdgpu_target=gfx906 ^hip@6.3.2
           - device: gpu_amd
