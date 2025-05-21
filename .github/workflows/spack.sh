@@ -12,7 +12,7 @@ source spack/share/spack/setup-env.sh
 
 spack config add "packages:all:target:[x86_64]"
 spack config add "packages:all:require:'%gcc'"
-spack config add "config:install_tree:padded_length:128"
+spack config --scope=site add "config:install_tree:padded_length:128"
 CACHE=/apps/spacks/buildcache/github
 spack mirror add --unsigned mycache file://$CACHE
 

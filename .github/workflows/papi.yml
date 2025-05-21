@@ -28,11 +28,6 @@ jobs:
       - run: .github/workflows/spack.sh
       - run: |
              source spack/share/spack/setup-env.sh
-             pwd
-             ls -l
-             ls -l spack/opt/spack
-             find spack/opt/spack/_* | wc
-             which spack
              spack find
              spack load papi
              papi_component_avail
