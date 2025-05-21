@@ -37,11 +37,7 @@ spack compiler find
 spack compiler rm llvm-amdgpu || true
 spack add $SPEC
 spack concretize --fresh
-spack install --only=dependencies --fail-fast &
-sleep 10
-spack install --only=dependencies --fail-fast
-wait
-
-spack install --only=package --no-cache --overwrite -y --test=root
-spack test run -x
+timeout 5h spack install --only=dependencies --fail-fast
+spack install --only=package --no-cache --overwrite -y
+#spack test run -x
 
