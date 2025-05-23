@@ -7,7 +7,8 @@ unset USER
 export HOME=`pwd`
 
 [ -z "$SPACK" ] && SPACK=https://github.com/spack/spack
-git clone $SPACK
+[ -z "$SPACK_DIR" ] && SPACK_DIR=spack
+git clone $SPACK $SPACK_DIR
 source spack/share/spack/setup-env.sh
 
 spack config add "packages:all:target:[x86_64]"
