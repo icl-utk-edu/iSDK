@@ -24,7 +24,8 @@ jobs:
     env:
       SPEC: ${{matrix.package}} ${{matrix.variants}} 
       COMPILER: ${{matrix.compiler}}
-      SPACK_DIR: /apps/spacks/buildcache/github/spack
     steps:
       - uses: actions/checkout@v4
-      - run: .github/workflows/spack.sh
+      - run: .github/workflows/spack.sh build
+      - run: .github/workflows/spack.sh test
+      - run: .github/workflows/spack.sh smoke

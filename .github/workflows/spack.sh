@@ -6,10 +6,22 @@ trap 'echo "# $BASH_COMMAND"' DEBUG
 unset USER
 export HOME=`pwd`
 
-[ -z "$SPACK" ] && SPACK=https://github.com/spack/spack
+STAGE=${1:-build}
+[ -z "$SPACK" ]     && SPACK=https://github.com/spack/spack
 [ -z "$SPACK_DIR" ] && SPACK_DIR=spack
-git clone $SPACK $SPACK_DIR
-source spack/share/spack/setup-env.sh
+[ -d $SPACK_DIR ]   || git clone $SPACK $SPACK_DIR
+source $SPACK_DIR/share/spack/setup-env.sh
+
+if [ "$STAGE" = "test" ]; then
+   echo Running test
+   spack env activate myenv
+   spack install --only=package --no-cache --overwrite -y --test=root
+   exit
+elif [ "$STAGE" = "smoke" ]; then
+   spack env activate myenv
+   spack test run -x
+   exit
+fi
 
 spack config add "packages:all:target:[x86_64]"
 spack config add "packages:all:require:'%gcc'"
@@ -40,5 +52,4 @@ spack add $SPEC
 spack concretize --fresh
 timeout 5h spack install --only=dependencies --fail-fast
 spack install --only=package --no-cache --overwrite -y
-#spack test run -x
 
