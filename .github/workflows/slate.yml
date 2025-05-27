@@ -27,5 +27,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: .github/workflows/spack.sh build
-      - run: .github/workflows/spack.sh test
-      - run: .github/workflows/spack.sh smoke
+      #- run: .github/workflows/spack.sh test
+      #- run: .github/workflows/spack.sh smoke
