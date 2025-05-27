@@ -34,6 +34,11 @@ save_buildcache() {
 }
 trap 'save_buildcache' EXIT
 
+if [[ "$SPEC" =~ (amdgpu_target=[a-z0-9]+) ]]; then
+   AMDGPU_TARGET=${BASH_REMATCH[1]}
+   spack config add "packages:all:variants:[$AMDGPU_TARGET]"
+fi
+
 # Set up the compiler
 C_PKG=${COMPILER/oneapi/intel-oneapi-compilers}
 spack env activate --temp
