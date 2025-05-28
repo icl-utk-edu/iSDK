@@ -29,7 +29,8 @@ jobs:
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
     steps:
       - uses: actions/checkout@v4
-      - run: .github/workflows/spack.sh
+      - run: .github/workflows/spack.sh build
+      - run: .github/workflows/spack.sh test
       - run: |
              source spack/share/spack/setup-env.sh
              spack load papi
