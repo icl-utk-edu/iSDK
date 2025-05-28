@@ -15,7 +15,7 @@ source $SPACK_DIR/share/spack/setup-env.sh
 if [ "$STAGE" = "test" ]; then
    echo Running test
    spack env activate myenv
-   spack install --only=package --no-cache --overwrite -y --test=root
+   spack install --only=package --no-cache --overwrite -y --debug --test=root
    exit
 elif [ "$STAGE" = "smoke" ]; then
    spack env activate myenv
@@ -56,5 +56,5 @@ spack compiler rm llvm-amdgpu || true
 spack add $SPEC
 spack concretize --fresh
 timeout 5h spack install --only=dependencies --fail-fast
-spack install --only=package --no-cache --overwrite -y
+spack install --only=package --no-cache --overwrite -y --debug
 
