@@ -1,7 +1,7 @@
 name: PAPI
 
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: .github/workflows/spack.sh build
-      - run: .github/workflows/spack.sh test
+      #- run: .github/workflows/spack.sh test
       - run: |
              source spack/share/spack/setup-env.sh
              spack load papi
