@@ -1,7 +1,10 @@
 name: PAPI
 
 on:
-  #push:
+  push:
+    paths:
+      - '.github/workflows/papi.yml'
+      - '.github/workflows/spack.sh'
   workflow_dispatch:
 
 jobs:
@@ -29,9 +32,12 @@ jobs:
       SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
     steps:
       - uses: actions/checkout@v4
-      - run: .github/workflows/spack.sh build
-      #- run: .github/workflows/spack.sh test
-      - run: |
+      - name: Build
+        run: .github/workflows/spack.sh build
+      - name: Test
+        run: .github/workflows/spack.sh test
+      - name: Component Tests
+        run: |
              source spack/share/spack/setup-env.sh
              spack load papi
              papi_component_avail
