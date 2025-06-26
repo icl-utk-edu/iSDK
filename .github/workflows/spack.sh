@@ -12,7 +12,7 @@ STAGE=${1:-build}
 [ -d $SPACK_DIR ]   || git clone $SPACK $SPACK_DIR
 source $SPACK_DIR/share/spack/setup-env.sh
 
-if [[ ! -z "$SPACK_PACKAGES" && ! -d "SPACK_DIR/spack-packages" ]]; then
+if [[ ! -z "$SPACK_PACKAGES" && ! -d "$SPACK_DIR/spack-packages" ]]; then
 	git clone $SPACK_PACKAGES $SPACK_DIR/spack-packages
 	spack repo add $SPACK_DIR/spack-packages/repos/spack_repo/builtin/
 fi
