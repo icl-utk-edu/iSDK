@@ -27,9 +27,9 @@ jobs:
       fail-fast: false
     runs-on: ${{matrix.device}}
     env:
-      SPEC: papi@master ${{matrix.spec}}
+      SPEC: papi@7.2.0 ${{matrix.spec}}
       COMPILER: gcc@11
-      SPACK: "-b gragghia/papi_rocp_sdk https://github.com/G-Ragghianti/spack/"
+      SPACK_PACKAGES: "-b gragghia/papi_7.2 https://github.com/G-Ragghianti/spack-packages/"
     steps:
       - uses: actions/checkout@v4
       - name: Build
